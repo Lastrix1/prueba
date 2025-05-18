@@ -2,7 +2,19 @@ from .setterts import *
 from .getters import *
 from .validaciones import *
 from .Funciones_parcial import *
-def opcion1(notas_estudiantes, nombres_estudiantes, genero_estudiantes, legajo_estudiantes,notas_existe):
+def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estudiantes:list, legajo_estudiantes:list,notas_existe:bool)->bool:
+    """Carga los datos de los estudiantes
+
+    Args:
+        notas_estudiantes (list[list]): matriz de notas de los estudiantes
+        nombres_estudiantes (list): lista de nombres de los estudiantes
+        genero_estudiantes (list):  lista de generos de los estudiantes
+        legajo_estudiantes (list):  lista de legajos de los estudiantes
+        notas_existe (bool): booleano que indica si existen notas
+
+    Returns:
+        bool: devuelve True cunado cargas las notas
+    """
     cargar_notas(notas_estudiantes)
     cargar_nombres(nombres_estudiantes)
     cargar_generos(genero_estudiantes)
@@ -50,7 +62,18 @@ def opcion5(notas_existe:bool,notas_alumnos:list)->None:
                 else:
                     mostrar_mayor_promedio(indices[0], promedio_materias)
 
-def opcion6(promedios_existe:bool,notas_existe:bool,estudiantes,legajos,notas_alumnos,generos,promedios)->None:
+def opcion6(promedios_existe:bool,notas_existe:bool,estudiantes:list,legajos:list,notas_alumnos:list[list],generos:list,promedios:list)->None:
+    """Muestra los datos de un alumno o todos los alumnos
+
+    Args:
+        promedios_existe (bool): booleano que indica si existen promedios
+        notas_existe (bool): booleano que indica si existen notas
+        estudiantes (list): lista de nombres de los estudiantes
+        legajos (list): lista de legajos de los estudiantes
+        notas_alumnos (list[list]): matriz de notas de los estudiantes
+        generos (list): lista de generos de los estudiantes
+        promedios (list): lista de promedios de los estudiantes
+    """
     if promedios_existe and notas_existe:
         legajo = get_int(input("Ingrese el numero de legajo a buscar: (Ingresar 0 si quiere ver todos los alumnos.)\n"))
         if legajo != 0:

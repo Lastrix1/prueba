@@ -146,3 +146,20 @@ def buscar_mayor_promedio(Promedios_materias:list)->list:
             j += 1
     return indices
 
+def buscar_indice_alumno(legajo:int, legajos:list)->int|None:
+    """Busca el indice de un alumno en la lista de legajos
+
+    Args:
+        legajo (int): numero de legajo a buscar
+        legajos (list): lista de legajos
+
+    Returns:
+        int|None: retorna el indice del legajo o None si no lo encuentra
+    """
+    indice = None
+    for i in range(len(legajos)):
+        if legajo == legajos[i]:
+            indice = i
+            break
+    return indice
+

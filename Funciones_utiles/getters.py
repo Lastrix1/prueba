@@ -1,4 +1,7 @@
+from .setterts import *
+from .getters import *
 from .validaciones import *
+from .Funciones_parcial import *
 def get_int(num:str) -> int | None:
     """convierte un string a un entero
 
@@ -25,7 +28,7 @@ def get_float(num:str)-> int | None:
     if es_numero_flotante(num):
         retorno=float(num)
     return retorno
-def mostrar_dato(indice_i:int,nombres:list,legajos:list,notas:list,generos:list,indice_j=0)->None:
+def mostrar_dato(indice_i:int,nombres:list,legajos:list,notas:list,generos:list)->None:
     """muestra los datos de la matriz
 
     Args:
@@ -57,25 +60,31 @@ def mostrar_datos(nombres:list,legajos:list,notas:list,generos:list)->None:
             mostrar_dato(i,nombres,legajos,notas,generos,j)
 
 
-def mostrar_mayores_promedios(indices, Promedios_materias):
+def mostrar_mayores_promedios(indices:list, Promedios_materias:list)->None:
+    """Muestra los promedios mayores de la lista de promedios
+
+    Args:
+        indices (list): indices de los promedios mayores
+        Promedios_materias (list): lista de promedios de las materias
+    """
     for i in range(len(Promedios_materias)):
         if indices[i] != "null":
             mostrar_mayor_promedio(indices[i], Promedios_materias)
 
 
-def mostrar_mayor_promedio(indice, Promedios_materias):
+def mostrar_mayor_promedio(indice:int, Promedios_materias:list)->None:
+    """Muestra el promedio mayor de la lista de promedios
+
+    Args:
+        indice (int): indice del promedio mayor
+        Promedios_materias (list): lista de promedios de las materias
+    """
     print(f"El mayor promedio es {Promedios_materias[indice]}, le pertenece a la Materia_{indice+1}")
 
 #buscAR Y MOSTRAR DATOS DE UN ESTUDIANTE POR LEGAJO, incluyendo promedio
 
 
-def buscar_indice_alumno(legajo, legajos):
-    indice = None
-    for i in range(len(legajos)):
-        if legajo == legajos[i]:
-            indice = i
-            break
-    return indice
+
 
 def mostrar_datos_promedio(indice_i:int,nombres:list,legajos:list,notas:list,generos:list,promedios:list)->None:
     if len(nombres[indice_i]) >6:
