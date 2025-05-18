@@ -1,6 +1,7 @@
-from .validaciones import *
+from .setterts import *
 from .getters import *
-
+from .validaciones import *
+from .Funciones_parcial import *
 
 
 def inicializar_matriz(cant_filas:int, cant_columnas:int, valor_inicial:int|str)->list[list]:
@@ -107,37 +108,41 @@ def ordenar_datos(nombres:list,legajos:list,notas:list[list],generos:list,promed
                 notas[j]=nota_aux
                 generos[j]=genero_aux
                 promedios[j]=promedio_aux
+
+
 def promedio_materias(notas:list[list])->None:
     Promedios_materias=inicializar_array(5,0)
     for i in range(len(notas)):
         for j in range(len(notas[i])):
-            match j:
-                case 0:
-                    promedio_materias[j]+=notas[i][j]
-                case 1:
-                    promedio_materias[j]+=notas[i][j]
-                case 2:
-                    promedio_materias[j]+=notas[i][j]
-                case 3:
-                    promedio_materias[j]+=notas[i][j]
-                case 4:
-                    promedio_materias[j]+=notas[i][j]
+            Promedios_materias[j] += notas[i][j]
     for i in range(len(Promedios_materias)):
-        Promedios_materias[i]=Promedios_materias[i]/len(notas[0])                    
-    return Promedios_materias
+        Promedios_materias[i] = Promedios_materias[i]/len(notas)   
+    return Promedios_materias  
+
     
+def buscar_mayor_promedio(Promedios_materias:list)->list:
+    """Busca el mayor promedio de la lista de promedios y devuelve los indices de los mismos
+       
 
+    Args:
+        Promedios_materias (list): lista de promedios de las materias
 
+    Returns:
+        list: lista de indices de los promedios mayores
+    """
+    
+    j = 0
+    indices = inicializar_array(len(Promedios_materias), "null")
+    maximo = Promedios_materias[0]
+    for i in range(len(Promedios_materias)):
+        if Promedios_materias[i] == maximo:
+            indices[j] = i
+            j += 1
+        if Promedios_materias[i] > maximo:
+            indices = inicializar_array(len(Promedios_materias), "null")
+            j = 0
+            maximo = Promedios_materias[i]
+            indices[j] = i
+            j += 1
+    return indices
 
-
-
-
-
-
-
-                
-                
-
-
-            
-            

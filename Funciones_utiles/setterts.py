@@ -1,5 +1,7 @@
+from .setterts import *
 from .getters import *
 from .validaciones import *
+from .Funciones_parcial import *
 def cargar_notas(matriz:list[list])->list[list]:
     """carga una matriz de notas
 
