@@ -1,5 +1,4 @@
 from Funciones_utiles import Funciones_parcial
-from Funciones_utiles import setterts
 from Funciones_utiles import funciones_menu
 
 notas_alumnos=[
@@ -55,21 +54,21 @@ legajos = [
     90284, 14867, 37520, 64281, 79014,
     50632, 81923, 27465, 19584, 64329
 ]
-promedios=Funciones_parcial.inicializar_array(2,0)
-notas_estudiantes=Funciones_parcial.inicializar_matriz(2,2,0)
-nombres_estudiantes=Funciones_parcial.inicializar_array(2,"")
-genero_estudiantes=Funciones_parcial.inicializar_array(2,"")
-legajo_estudiantes=Funciones_parcial.inicializar_array(5,0)
+promedios=Funciones_parcial.inicializar_array(30,0)
+notas_estudiantes=Funciones_parcial.inicializar_matriz(30,5,0)
+nombres_estudiantes=Funciones_parcial.inicializar_array(30,"")
+genero_estudiantes=Funciones_parcial.inicializar_array(30,"")
+legajo_estudiantes=Funciones_parcial.inicializar_array(30,0)
 notas_existe=True
-promedios_existe=False
+promedios_existe=True
 promedio_materias = Funciones_parcial.inicializar_array(5, 0)
+
 while True:
     print("--------------------------------------\n")
-    valor=input(f"Ingresar El numero de la opcion que quiera elegir \n ----------------------------\n 1_Cargar Datos De matriz \n 2_Mostrar Datos \n 3_Calcular Promedio \n 4_Mostrar Datos De Manera Decendiente \n 5_Materias Con Mayor Promedio \n 6_Buscar y Mostrar Datos\n 7_Salir\n Opcion: ")
+    valor=input(f"Ingresar El numero de la opcion que quiera elegir \n ----------------------------\n 1_Cargar Datos De matriz \n 2_Mostrar Datos \n 3_Calcular Promedio \n 4_Mostrar Datos De Manera Decendiente \n 5_Materias Con Mayor Promedio \n 6_Buscar y Mostrar Datos\n 7_mostrar cuantas veces se repite cada calificación en una asignatura determinada\n 8_Salir\nOpcion: ")
     match valor:
         case "1":
-            
-            notas_existe=funciones_menu.opcion1(notas_estudiantes, nombres_estudiantes, genero_estudiantes, legajo_estudiantes,notas_existe)
+                notas_existe=funciones_menu.opcion1(notas_estudiantes, nombres_estudiantes, genero_estudiantes, legajo_estudiantes,notas_existe)
         case "2":
                 funciones_menu.opcion2(notas_existe,legajos,estudiantes,generos,notas_alumnos)
         case "3":
@@ -80,6 +79,11 @@ while True:
                 funciones_menu.opcion5(notas_existe,notas_alumnos)
         case "6":
                 funciones_menu.opcion6(promedios_existe,notas_existe,estudiantes,legajos,notas_alumnos,generos,promedios)
-        case "7":
+        case "7": 
+                funciones_menu.opcion7(notas_existe,notas_alumnos)
+                
+        case "8":
                 print("Saliendo del programa...")
                 break
+        case _:
+                print("Opcion no valida, por favor ingrese una opcion valida")

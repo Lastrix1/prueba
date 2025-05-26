@@ -1,7 +1,3 @@
-from .setterts import *
-from .getters import *
-from .validaciones import *
-from .Funciones_parcial import *
 
 
 def inicializar_matriz(cant_filas:int, cant_columnas:int, valor_inicial:int|str)->list[list]:
@@ -44,7 +40,7 @@ def calcular_promedio(notas_alumnos:list[list],promedio:list)->None:
         None: no retorna nada
     """
     
-    for i in range(len(notas_alumnos)):
+    for i in range(len(promedio)):
         suma=0
         for j in range(len(notas_alumnos[i])):
            suma+=notas_alumnos[i][j]
@@ -111,6 +107,14 @@ def ordenar_datos(nombres:list,legajos:list,notas:list[list],generos:list,promed
 
 
 def promedio_materias(notas:list[list])->None:
+    """Calcula el promedio de cada materia en la matriz de notas
+
+    Args:
+        notas (list[list]): matriz de notas de los alumnos
+
+    Returns:
+        list: lista con los promedios de cada materia
+    """
     Promedios_materias=inicializar_array(5,0)
     for i in range(len(notas)):
         for j in range(len(notas[i])):
@@ -132,14 +136,14 @@ def buscar_mayor_promedio(Promedios_materias:list)->list:
     """
     
     j = 0
-    indices = inicializar_array(len(Promedios_materias), "null")
+    indices = inicializar_array(len(Promedios_materias), None)
     maximo = Promedios_materias[0]
     for i in range(len(Promedios_materias)):
         if Promedios_materias[i] == maximo:
             indices[j] = i
             j += 1
-        if Promedios_materias[i] > maximo:
-            indices = inicializar_array(len(Promedios_materias), "null")
+        elif Promedios_materias[i] > maximo:
+            indices = inicializar_array(len(Promedios_materias), None)
             j = 0
             maximo = Promedios_materias[i]
             indices[j] = i
@@ -162,4 +166,18 @@ def buscar_indice_alumno(legajo:int, legajos:list)->int|None:
             indice = i
             break
     return indice
+def cantidad_de_notas_materia(notas:list[list],indice_materia:int)->list:
+    """"Calcula la cantidad de notas por materia
 
+    Args:
+        notas (list[list]): matriz de notas de los alumnos
+        indice_materia (int): indice de la materia a calcular
+
+    Returns:
+        list: lista con la cantidad de notas por materia
+    """
+    contador=inicializar_array(10,0)
+    for i in range(len(notas)):
+            contador[notas[i][indice_materia]-1]+=1
+    return contador
+            

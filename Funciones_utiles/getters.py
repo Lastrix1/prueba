@@ -1,5 +1,4 @@
-from .setterts import *
-from .getters import *
+
 from .validaciones import *
 from .Funciones_parcial import *
 def get_int(num:str) -> int | None:
@@ -15,7 +14,7 @@ def get_int(num:str) -> int | None:
     if es_numero_entero(num):
         retorno=int(num)
     return retorno
-def get_float(num:str)-> int | None:
+def get_float(num:str)-> float | None:
     """convierte un string a un float
 
     Args:
@@ -28,23 +27,29 @@ def get_float(num:str)-> int | None:
     if es_numero_flotante(num):
         retorno=float(num)
     return retorno
-def mostrar_dato(indice_i:int,nombres:list,legajos:list,notas:list,generos:list)->None:
+def mostrar_dato(indice_i:int,nombres:list,legajos:list,notas:list,generos:list,promedio=0)->None:
     """muestra los datos de la matriz
 
     Args:
         indice_i (int): fila a mostrar
-        indice_j (int): columna a mostrar
         nombres (list): lista de nombres
         legajos (list): lista de legajos
         notas (list): lista de notas
         generos (list): lista de generos
+        promedio (int, optional): promedio del estudiante es cero si no tiene promedio.
     """
-    if len(nombres[indice_i]) >6:
-        print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t")
+    print("legajo\t nombre\t     nota1\tnota2\tnota3\tnota4\tnota5  genero")
+    if promedio == 0:
+        if len(nombres[indice_i]) >6:
+            print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t")
+        else:
+            print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t")
     else:
-        print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t")
-
-def mostrar_datos(nombres:list,legajos:list,notas:list,generos:list)->None:
+        if len(nombres[indice_i]) >6:
+                print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedio}\t")
+        else:
+                print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedio}\t")
+def mostrar_datos(nombres:list,legajos:list,notas:list,generos:list,promedio=0)->None:
     """muestra los datos de la matriz
 
     Args:
@@ -52,12 +57,12 @@ def mostrar_datos(nombres:list,legajos:list,notas:list,generos:list)->None:
         legajos (list): lista de legajos
         notas (list): lista de notas
         generos (list): lista de generos
+        promedio (int, optional): promedio del estudiante es cero si no tiene promedio.
     """
-    print("legajo\t nombre\t     nota1\tnota2\tnota3\tnota4\tnota5  genero")
+    
     for i in range(len(nombres)):
         print("---------------------------------------------------------------------------------")
-        for j in range(len(notas[i])):
-            mostrar_dato(i,nombres,legajos,notas,generos,j)
+        mostrar_dato(i,nombres,legajos,notas,generos,promedio)
 
 
 def mostrar_mayores_promedios(indices:list, Promedios_materias:list)->None:
@@ -68,7 +73,7 @@ def mostrar_mayores_promedios(indices:list, Promedios_materias:list)->None:
         Promedios_materias (list): lista de promedios de las materias
     """
     for i in range(len(Promedios_materias)):
-        if indices[i] != "null":
+        if indices[i] != None:
             mostrar_mayor_promedio(indices[i], Promedios_materias)
 
 
@@ -80,18 +85,13 @@ def mostrar_mayor_promedio(indice:int, Promedios_materias:list)->None:
         Promedios_materias (list): lista de promedios de las materias
     """
     print(f"El mayor promedio es {Promedios_materias[indice]}, le pertenece a la Materia_{indice+1}")
+def mostrar_cantidad_de_notas(contador:list,indice_materia:int)->None:
+    """Muestra la cantidad de cada nota ingresada en la matriz de notas
 
-#buscAR Y MOSTRAR DATOS DE UN ESTUDIANTE POR LEGAJO, incluyendo promedio
-
-
-
-
-def mostrar_datos_promedio(indice_i:int,nombres:list,legajos:list,notas:list,generos:list,promedios:list)->None:
-    if len(nombres[indice_i]) >6:
-        print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedios[indice_i]}\t")
-    else:
-        print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedios[indice_i]}\t")
-
-def mostrar_datos_todos(nombres:list,legajos:list,notas:list,generos:list,promedios:list)->None:
-    for i in range(len(nombres)):
-        mostrar_datos_promedio(i, nombres, legajos, notas, generos, promedios)
+    Args:
+        contador (list): lista de contador de notas
+    """
+    for i in range(len(contador)):
+        print("---------------------------------------------------------------------------------")
+        print(f"La cantidad de {i+1} ingresadas en la materia_{indice_materia} es {contador[i]}")
+      

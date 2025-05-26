@@ -72,9 +72,9 @@ def verificar_legajo(legajo:int)->bool:
     Returns:
         bool: retorna true si el legajo es valido y false si no
     """
-    es_valido=True
-    if legajo<1 or legajo>99999:
-        es_valido=False
+    es_valido=False
+    if legajo>=10000 and legajo<=99999:
+        es_valido=True
     return es_valido
 
 def vericar_nombre(nombre:str)->bool:

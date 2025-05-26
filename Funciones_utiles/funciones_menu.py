@@ -4,21 +4,14 @@ from .validaciones import *
 from .Funciones_parcial import *
 def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estudiantes:list, legajo_estudiantes:list,notas_existe:bool)->bool:
     """Carga los datos de los estudiantes
-
     Args:
         notas_estudiantes (list[list]): matriz de notas de los estudiantes
         nombres_estudiantes (list): lista de nombres de los estudiantes
-        genero_estudiantes (list):  lista de generos de los estudiantes
-        legajo_estudiantes (list):  lista de legajos de los estudiantes
+        genero_estudiantes (list): lista de generos de los estudiantes
+        legajo_estudiantes (list): lista de legajos de los estudiantes
         notas_existe (bool): booleano que indica si existen notas
-
-    Returns:
-        bool: devuelve True cunado cargas las notas
     """
-    cargar_notas(notas_estudiantes)
-    cargar_nombres(nombres_estudiantes)
-    cargar_generos(genero_estudiantes)
-    cargar_legajos(legajo_estudiantes)
+    cargar_datos(nombres_estudiantes,legajo_estudiantes,genero_estudiantes,notas_estudiantes)
     notas_existe=True
     return notas_existe
 
@@ -40,7 +33,7 @@ def opcion3(notas_existe:bool,notas_alumnos:list[list],promedios:list)->bool:
 def opcion4(notas_existe:bool,estudiantes,legajos,notas_alumnos,generos,promedios)->None:
     if notas_existe:
         ordenar_datos(estudiantes,legajos,notas_alumnos,generos,promedios)
-        print(promedios)
+        mostrar_datos(estudiantes,legajos,notas_alumnos,generos,promedios)
     else:
         print("No hay datos para mostrar")
 def opcion5(notas_existe:bool,notas_alumnos:list)->None:
@@ -51,16 +44,16 @@ def opcion5(notas_existe:bool,notas_alumnos:list)->None:
         notas_alumnos (list): matriz de notas de los alumnos
     """
     if notas_existe:
-                promedio_materias = promedio_materias(notas_alumnos)
-                indices = buscar_mayor_promedio(promedio_materias)
+                promedio_mat = promedio_materias(notas_alumnos)
+                indices = buscar_mayor_promedio(promedio_mat)
                 contador_indices = 0
                 for i in range(len(indices)):
-                    if indices[i] != "null":
+                    if indices[i] != None:
                         contador_indices += 1
                 if contador_indices > 1:
-                    mostrar_mayores_promedios(indices, promedio_materias)
+                    mostrar_mayores_promedios(indices, promedio_mat)
                 else:
-                    mostrar_mayor_promedio(indices[0], promedio_materias)
+                    mostrar_mayor_promedio(indices[0], promedio_mat)
 
 def opcion6(promedios_existe:bool,notas_existe:bool,estudiantes:list,legajos:list,notas_alumnos:list[list],generos:list,promedios:list)->None:
     """Muestra los datos de un alumno o todos los alumnos
@@ -75,14 +68,27 @@ def opcion6(promedios_existe:bool,notas_existe:bool,estudiantes:list,legajos:lis
         promedios (list): lista de promedios de los estudiantes
     """
     if promedios_existe and notas_existe:
-        legajo = get_int(input("Ingrese el numero de legajo a buscar: (Ingresar 0 si quiere ver todos los alumnos.)\n"))
-        if legajo != 0:
-            if verificar_legajo(legajo):
-                indice = buscar_indice_alumno(legajo, legajos)
-                mostrar_datos_promedio(indice, estudiantes, legajos, notas_alumnos, generos, promedios)
-            else:
-                print("Legajo no válido.")
+        legajo = get_int(input("Ingrese el numero de legajo a buscar\n"))
+        indice = buscar_indice_alumno(legajo, legajos)
+        if indice != None:
+            mostrar_dato(indice, estudiantes, legajos, notas_alumnos, generos, promedios[indice])
         else:
-            mostrar_datos_todos(estudiantes, legajos, notas_alumnos, generos, promedios)
+            print("legajo\t nombre\t     nota1\tnota2\tnota3\tnota4\tnota5  genero")
     else:
         print("\nLos promedios o las notas aún no están calculadas. Calcular promedios y notas antes de utilizar esta función.\n")
+
+def opcion7(notas_existe:bool,notas_alumnos:list[list])->None:
+    if notas_existe:
+        print("---------------------------------------------------------------------------------")
+        indice = get_int(input("Ingrese el numero de la materia a buscar (1-5): "))
+        while True:
+            if indice>=1 and indice<=5:
+                break
+            print("---------------------------------------------------------------------------------")
+            indice = get_int(input("ERROR Ingrese el numero de la materia a buscar (1-5): "))
+            
+        contador=cantidad_de_notas_materia(notas_alumnos,indice-1)
+        mostrar_cantidad_de_notas(contador,indice)
+    else:
+        print("cargar notas antes de usar esta funcion")
+    
