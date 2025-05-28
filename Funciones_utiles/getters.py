@@ -46,9 +46,9 @@ def mostrar_dato(indice_i:int,nombres:list,legajos:list,notas:list,generos:list,
             print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t")
     else:
         if len(nombres[indice_i]) >6:
-                print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedio[indice_i]}\t")
+                print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedio}\t")
         else:
-                print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedio[indice_i]}\t")
+                print(f"{legajos[indice_i]}\t {nombres[indice_i]}\t\t{notas[indice_i][0]}\t{notas[indice_i][1]}\t{notas[indice_i][2]}\t{notas[indice_i][3]}\t{notas[indice_i][4]}\t {generos[indice_i]}\t {promedio}\t")
 def mostrar_datos(nombres:list,legajos:list,notas:list,generos:list,promedio=0)->None:
     """muestra los datos de la matriz
 
