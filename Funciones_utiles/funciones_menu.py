@@ -2,7 +2,7 @@ from .setterts import *
 from .getters import *
 from .validaciones import *
 from .Funciones_parcial import *
-def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estudiantes:list, legajo_estudiantes:list,notas_existe:bool)->bool:
+def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estudiantes:list, legajo_estudiantes:list,notas_existe:bool,hardodear:bool)->bool:
     """Carga los datos de los estudiantes
     Args:
         notas_estudiantes (list[list]): matriz de notas de los estudiantes
@@ -10,9 +10,14 @@ def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estud
         genero_estudiantes (list): lista de generos de los estudiantes
         legajo_estudiantes (list): lista de legajos de los estudiantes
         notas_existe (bool): booleano que indica si existen notas
+        hardodear (bool): booleano que indica si se deben cargar los datos de forma hardcodeada
     """
-    cargar_datos(nombres_estudiantes,legajo_estudiantes,genero_estudiantes,notas_estudiantes)
-    notas_existe=True
+    if hardodear:
+        notas_existe=True
+         
+    else:
+        cargar_datos(nombres_estudiantes,legajo_estudiantes,genero_estudiantes,notas_estudiantes)
+        notas_existe=True
     return notas_existe
 
 def opcion2(notas_existe:bool,legajos:list,estudiantes:list,generos:list,notas_alumnos:list)->None:

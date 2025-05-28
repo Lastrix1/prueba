@@ -59,8 +59,9 @@ notas_estudiantes=Funciones_parcial.inicializar_matriz(30,5,0)
 nombres_estudiantes=Funciones_parcial.inicializar_array(30,"")
 genero_estudiantes=Funciones_parcial.inicializar_array(30,"")
 legajo_estudiantes=Funciones_parcial.inicializar_array(30,0)
-notas_existe=True
-promedios_existe=True
+notas_existe=False
+promedios_existe=False
+hardcodear=True
 promedio_materias = Funciones_parcial.inicializar_array(5, 0)
 
 while True:
@@ -68,7 +69,7 @@ while True:
     valor=input(f"Ingresar El numero de la opcion que quiera elegir \n ----------------------------\n 1_Cargar Datos De matriz \n 2_Mostrar Datos \n 3_Calcular Promedio \n 4_Mostrar Datos De Manera Decendiente \n 5_Materias Con Mayor Promedio \n 6_Buscar y Mostrar Datos\n 7_mostrar cuantas veces se repite cada calificación en una asignatura determinada\n 8_Salir\nOpcion: ")
     match valor:
         case "1":
-                notas_existe=funciones_menu.opcion1(notas_estudiantes, nombres_estudiantes, genero_estudiantes, legajo_estudiantes,notas_existe)
+                notas_existe=funciones_menu.opcion1(notas_estudiantes, nombres_estudiantes, genero_estudiantes, legajo_estudiantes,notas_existe,hardcodear)
         case "2":
                 funciones_menu.opcion2(notas_existe,legajos,estudiantes,generos,notas_alumnos)
         case "3":
