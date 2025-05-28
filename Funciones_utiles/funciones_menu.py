@@ -18,6 +18,15 @@ def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estud
     return notas_existe
 
 def opcion2(notas_existe:bool,legajos:list,estudiantes:list,generos:list,notas_alumnos:list)->None:
+    """Muestra los datos de los estudiantes
+
+    Args:
+        notas_existe (bool): True si existen notas, False si no
+        legajos (list): lista de legajos de los estudiantes
+        estudiantes (list): lista de nombres de los estudiantes
+        generos (list): lista de generos de los estudiantes
+        notas_alumnos (list): matriz de notas de los estudiantes
+    """
     if notas_existe:
         mostrar_datos(estudiantes,legajos,notas_alumnos,generos)
     else:
@@ -25,6 +34,16 @@ def opcion2(notas_existe:bool,legajos:list,estudiantes:list,generos:list,notas_a
 
 
 def opcion3(notas_existe:bool,notas_alumnos:list[list],promedios:list)->bool:
+    """Calcula el promedio de las notas de los estudiantes
+
+    Args:
+        notas_existe (bool): True si existen notas, False si no
+        notas_alumnos (list[list]): matriz de notas de los estudiantes
+        promedios (list): lista donde se guardaran los promedios de los estudiantes
+
+    Returns:
+        bool: _description_
+    """
     if notas_existe:
         calcular_promedio(notas_alumnos,promedios)
         promedios_existe = True
@@ -80,9 +99,11 @@ def opcion6(promedios_existe:bool,notas_existe:bool,estudiantes:list,legajos:lis
         print("\nLos promedios o las notas aún no están calculadas. Calcular promedios y notas antes de utilizar esta función.\n")
 
 def opcion7(notas_existe:bool,notas_alumnos:list[list])->None:
+    
     if notas_existe:
         print("---------------------------------------------------------------------------------")
         indice = get_int(input("Ingrese el numero de la materia a buscar (1-5): "))
+     
         while True:
             if indice != None:
                 if indice>=1 and indice<=5:
