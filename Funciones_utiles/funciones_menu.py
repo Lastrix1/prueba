@@ -84,8 +84,9 @@ def opcion7(notas_existe:bool,notas_alumnos:list[list])->None:
         print("---------------------------------------------------------------------------------")
         indice = get_int(input("Ingrese el numero de la materia a buscar (1-5): "))
         while True:
-            if indice>=1 and indice<=5:
-                break
+            if indice != None:
+                if indice>=1 and indice<=5:
+                    break
             print("---------------------------------------------------------------------------------")
             indice = get_int(input("ERROR Ingrese el numero de la materia a buscar (1-5): "))
             
