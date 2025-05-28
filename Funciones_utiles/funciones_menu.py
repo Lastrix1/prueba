@@ -2,7 +2,7 @@ from .setterts import *
 from .getters import *
 from .validaciones import *
 from .Funciones_parcial import *
-def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estudiantes:list, legajo_estudiantes:list,notas_existe:bool,hardodear:bool)->bool:
+def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estudiantes:list, legajo_estudiantes:list,notas_existe:bool)->bool:
     """Carga los datos de los estudiantes
     Args:
         notas_estudiantes (list[list]): matriz de notas de los estudiantes
@@ -12,12 +12,9 @@ def opcion1(notas_estudiantes:list[list], nombres_estudiantes:list, genero_estud
         notas_existe (bool): booleano que indica si existen notas
         hardodear (bool): booleano que indica si se deben cargar los datos de forma hardcodeada
     """
-    if hardodear:
-        notas_existe=True
-         
-    else:
-        cargar_datos(nombres_estudiantes,legajo_estudiantes,genero_estudiantes,notas_estudiantes)
-        notas_existe=True
+
+    cargar_datos(nombres_estudiantes,legajo_estudiantes,genero_estudiantes,notas_estudiantes)
+    notas_existe=True
     return notas_existe
 
 def opcion2(notas_existe:bool,legajos:list,estudiantes:list,generos:list,notas_alumnos:list)->None:
@@ -76,7 +73,7 @@ def opcion6(promedios_existe:bool,notas_existe:bool,estudiantes:list,legajos:lis
         legajo = get_int(input("Ingrese el numero de legajo a buscar\n"))
         indice = buscar_indice_alumno(legajo, legajos)
         if indice != None:
-            mostrar_dato(indice, estudiantes, legajos, notas_alumnos, generos, promedios[indice])
+            mostrar_dato(indice, estudiantes, legajos, notas_alumnos, generos, promedios)
         else:
             print("legajo\t nombre\t     nota1\tnota2\tnota3\tnota4\tnota5  genero")
     else:
